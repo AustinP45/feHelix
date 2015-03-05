@@ -1,5 +1,5 @@
 """
-Django settings for mysite project.
+Django settings for feHelix project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -19,8 +19,7 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-###### Need to change this ######
-SECRET_KEY = '%gn!s!vmktuhzp+w3)iz#+v1&q$p8k%hizx7!g_y28ag8si!0_'
+SECRET_KEY = '&82q3nme(r^4xo7uwpm&li$+^esl&q8cb1*u4$$-2)5a%)t(bt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
