@@ -1,9 +1,7 @@
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from ratings import views
+
 urlpatterns = patterns('',
-# Examples:
-# url(r'^$', 'feHelix.views.home', name='home'),
-# url(r'^blog/', include('blog.urls')),
-	url(r'^admin/', include(admin.site.urls)),
-	url(r'', include('ratings.urls')),
-	)
+    url(r'^$', views.categorys_list),
+    url(r'^category/(?P<pk>[0-9]+)/$', views.category_detail),
+)

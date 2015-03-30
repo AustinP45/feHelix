@@ -1,3 +1,9 @@
 from django.contrib import admin
-
-# Register your models here.
+from .models import Tool
+from .models import Category
+from .models import ToolCat
+from .models import Rating
+admin.site.register(Tool)
+admin.site.register(Category)
+admin.site.register(ToolCat)
+admin.site.register(Rating)
