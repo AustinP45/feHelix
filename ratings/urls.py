@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from ratings import views
+from . import views
 
 urlpatterns = patterns('',
     url(r'^$', views.categorys_list),
