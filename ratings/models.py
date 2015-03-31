@@ -35,7 +35,7 @@ class ToolCat(models.Model):
 class Rating(models.Model):
     tool_id = models.ForeignKey(Tool)
     comment = models.TextField()
-    reviewDate = models.DateField()
+    review_date = models.DateField()
     overall_rating = models.PositiveSmallIntegerField()
     qual_of_doc = models.PositiveSmallIntegerField()
     efficacy = models.PositiveSmallIntegerField()
