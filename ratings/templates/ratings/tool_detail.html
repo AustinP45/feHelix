@@ -1,0 +1,19 @@
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+    {% if tool.name %}
+    {% endif %}
+    <h1>{{ tool.name }}</h1>
+    <p>{{ tool.desc|linebreaks }}</p>
+    <p>Overall Score: {{ tool.overall_score|floatformat:"2" }} // Documentation Quality: {{ tool.qual_of_doc|floatformat:"2" }} // Efficacy: {{ tool.efficacy|floatformat:"2" }} // Usability: {{ tool.usability|floatformat:"2" }}<br>
+    <a href="{{ tool.link }}">{{ tool.name }} Home Page</a><br>
+    {% if tool.free == True %}Free tool.<br>{% endif %}
+    {% if tool.online == True %}Online tool.{% endif %}</p>
+    {% for rating in ratings %}
+        <div class = "rating">
+            <p>Review Date: {{ rating.review_date }} // Overall Score: {{ rating.overall_score|floatformat:"2" }} // Documentation Quality: {{ rating.qual_of_doc|floatformat:"2" }} // Efficacy: {{ rating.efficacy|floatformat:"2" }} // Usability: {{ rating.usability|floatformat:"2" }}
+            {{ rating.comment }}</p>
+            
+        </div>
+    {% endfor %}
+{% endblock %}
