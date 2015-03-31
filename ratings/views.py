@@ -22,4 +22,4 @@ def tool_detail(request, pk):
     tool = get_object_or_404(Tool, pk=pk)
     ratings = Rating.objects.filter(rating__tool_id = tool)
     return render(request, 'ratings/category_detail.html', {'tool': tool, 'ratings': ratings})
-""""
+"""""
