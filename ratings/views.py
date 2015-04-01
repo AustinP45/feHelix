@@ -24,3 +24,5 @@ def tool_detail(request, pk):
             request, 
             'ratings/tool_detail.html', 
             {'tool': tool, 'votes': votes})
+
+    # a comment
