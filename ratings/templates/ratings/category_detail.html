@@ -7,7 +7,7 @@
     <p>{{ category.desc }}</p>   
     {% for tool in tools %}
         <div class = "tool">
-            <h1><a href="">{{ tool.name }}</a></h1>
+            <h1><a href="{% url 'ratings.views.tool_detail' pk=tool.pk  %}">{{ tool.name }}</a></h1>
             <p>{{ tool.desc|linebreaks }}</p>
             <p>Overall Score: {{ tool.overall_score|floatformat:"2" }} // Documentation Quality: {{ tool.qual_of_doc|floatformat:"2" }} // Efficacy: {{ tool.efficacy|floatformat:"2" }} // Usability: {{ tool.usability|floatformat:"2" }}<br>
                 <a href="{{ tool.link }}">{{ tool.name }} Home Page</a><br>
