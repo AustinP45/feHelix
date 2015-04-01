@@ -26,13 +26,15 @@ class Category(models.Model):
 	
 # For many-to-many relationship	
 class ToolCat(models.Model):
-    tool_id = models.ForeignKey('Tool')
-    cat_id = models.ForeignKey('Category')
+    tool_id = models.ForeignKey(Tool)
+    cat_id = models.ForeignKey(Category)
 
     def __str__(self):
         return str(self.tool_id) + " in " + str(self.cat_id)
 	
-class Rating(models.Model):
+
+# This model has problems and I am not sure why.
+class Vote(models.Model):
     tool_id = models.ForeignKey(Tool)
     comment = models.TextField()
     review_date = models.DateField()
@@ -42,4 +44,4 @@ class Rating(models.Model):
     usability = models.PositiveSmallIntegerField()
 
     def __str__(self):
-        return self.tool_id + ' ' + self.overall_rating
+        return str(self.tool_id) + ' ' + str(self.overall_rating)
