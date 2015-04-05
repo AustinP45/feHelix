@@ -1,7 +1,7 @@
 from django.db import models
 
 class Tool(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique = True)
     desc =  models.TextField()
     link =  models.URLField(max_length=100)
     overall_score = models.DecimalField(max_digits=4, decimal_places=3)
@@ -17,7 +17,7 @@ class Tool(models.Model):
 
 class Category(models.Model):
     # Must be unique
-    name = models.CharField(max_length=30,unique=True)
+    name = models.CharField(max_length=30, unique=True)
     # No length limit
     desc = models.TextField()
 
@@ -32,11 +32,9 @@ class ToolCat(models.Model):
     def __str__(self):
         return str(self.tool_id) + " in " + str(self.cat_id)
 	
-
-# This model has problems and I am not sure why.
 class Vote(models.Model):
     tool_id = models.ForeignKey(Tool)
-    comment = models.TextField()
+    comment = models.TextField(blank = True)
     review_date = models.DateField()
     overall_rating = models.PositiveSmallIntegerField()
     qual_of_doc = models.PositiveSmallIntegerField()
@@ -44,4 +42,5 @@ class Vote(models.Model):
     usability = models.PositiveSmallIntegerField()
 
     def __str__(self):
-        return str(self.tool_id) + ' ' + str(self.overall_rating)
+        return str(self.tool_id) + ' ' + str(self.review_date)
+

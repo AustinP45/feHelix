@@ -9,6 +9,12 @@
     <a href="{{ tool.link }}">{{ tool.name }} Home Page</a><br>
     {% if tool.free == True %}Free tool.<br>{% endif %}
     {% if tool.online == True %}Online tool.{% endif %}</p>
+
+    <form method="POST">{% csrf_token %}        
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
     {% for vote in votes %}
         <div class = "vote">
             <p>Review Date: {{ vote.review_date }} <br>
