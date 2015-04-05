@@ -19,7 +19,15 @@ def category_detail(request, pk):
     category = get_object_or_404(Category, pk=pk)
     tools = Tool.objects.filter(toolcat__cat_id = category)
     return render(request, 'ratings/category_detail.html', {'category': category, 'tools': tools})
+    
+def category_detail_by_name(request, cat_name):
+    category = get_object_or_404(Category, name = cat_name.replace('_', ' '))
+    return category_detail(request, category.id)
 
+def tool_detail_by_name(request, tool_name):
+    tool = get_object_or_404(Tool, name = tool_name.replace('_', ' '))
+    return tool_detail(request, tool.id)
+    
 def tool_detail(request, pk):
     tool = get_object_or_404(Tool, pk=pk)
     votes = Vote.objects.filter(tool_id = tool)
