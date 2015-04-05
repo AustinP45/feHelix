@@ -30,8 +30,20 @@ def tool_detail(request, pk):
             vote = form.save(commit = False)
             vote.tool_id = tool
             vote.review_date = datetime.datetime.now()
+            if (votes.count == 0):
+                tool.overall_rating = vote.overall_rating
+                tool.qual_of_doc = vote.qual_of_doc
+                tool.efficacy = vote.efficacy
+                tool.usability = vote.usability
+            else:
+                tool.overall_rating = (tool.overall_rating * votes.count() + vote.overall_rating) / (votes.count() + 1)
+                tool.qual_of_doc = (tool.qual_of_doc * votes.count() + vote.qual_of_doc) / (votes.count() + 1)
+                tool.efficacy = (tool.efficacy * votes.count() + vote.efficacy) / (votes.count() + 1)
+                tool.usability = (tool.usability * votes.count() + vote.usability) / (votes.count() + 1)
+            tool.save()
             vote.save()
-        return redirect('.', pk = vote.tool_id) # CHANGE THIS TO SOMETHING REAL LATER
+            
+        return redirect('.', pk = pk) # Redirects to same page.
     else:
         form = VoteForm()
         return render(request, 'ratings/tool_detail.html', {'tool': tool, 'votes': votes, 'form': form})
