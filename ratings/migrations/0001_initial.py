@@ -13,8 +13,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
-                ('name', models.CharField(unique=True, max_length=30)),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('name', models.CharField(max_length=30, unique=True)),
                 ('desc', models.TextField()),
             ],
             options={
@@ -24,9 +24,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Rating',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
                 ('comment', models.TextField()),
-                ('reviewDate', models.DateField()),
                 ('overall_rating', models.PositiveSmallIntegerField()),
                 ('qual_of_doc', models.PositiveSmallIntegerField()),
                 ('efficacy', models.PositiveSmallIntegerField()),
@@ -39,11 +38,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Tool',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
                 ('name', models.CharField(max_length=30)),
                 ('desc', models.TextField()),
                 ('link', models.URLField(max_length=100)),
-                ('overall_score', models.DecimalField(decimal_places=2, max_digits=4)),
+                ('overall_score', models.DecimalField(decimal_places=3, max_digits=4)),
+                ('qual_of_doc', models.DecimalField(decimal_places=3, max_digits=4)),
+                ('efficacy', models.DecimalField(decimal_places=3, max_digits=4)),
+                ('usability', models.DecimalField(decimal_places=3, max_digits=4)),
                 ('free', models.BooleanField(default=False)),
                 ('online', models.BooleanField(default=False)),
                 ('review_count', models.IntegerField()),
@@ -55,7 +57,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ToolCat',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
                 ('cat_id', models.ForeignKey(to='ratings.Category')),
                 ('tool_id', models.ForeignKey(to='ratings.Tool')),
             ],

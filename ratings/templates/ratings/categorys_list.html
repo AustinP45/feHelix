@@ -1,0 +1,10 @@
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+    {% for category in categorys %}
+        <div class="category">
+            <h1><a href="{% url 'ratings.views.category_detail_by_name' category.name  %}">{{ category.name }}</a></h1>
+            <p>{{ category.desc|linebreaks }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
