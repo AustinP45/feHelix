@@ -11,7 +11,14 @@
     {% if tool.online == True %}Online tool.{% endif %}</p>
 
     <form method="POST">{% csrf_token %}        
-        {{ form.as_p }}
+        <table cellpadding = "50">
+            <tr><td>Overall Rating: </td><td>{{ form.overall_rating }}</td>
+            <tr><td>Quality of Documentation:&nbsp </td><td>{{ form.qual_of_doc }}</td>
+            <tr><td>Efficacy: </td><td>{{ form.efficacy }}</td>
+            <tr><td>Usability: </td><td>{{ form.usability }}</td></table>
+            <table><tr><td>Comment (Optional):</td></tr>
+            <tr><td>{{ form.comment }}</td></tr> 
+        </table>
         <button type="submit">Save</button>
     </form>
 

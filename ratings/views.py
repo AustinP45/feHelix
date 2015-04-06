@@ -1,3 +1,5 @@
+# Pretty good chance having two categories or tools with same names or spaces in place of underscores will cause problems.
+
 from django.shortcuts import get_object_or_404, redirect, render
 #from django.http import HttpResponseRedirect
 import datetime
