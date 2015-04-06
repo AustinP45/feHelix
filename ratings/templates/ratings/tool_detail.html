@@ -5,14 +5,27 @@
     {% endif %}
     <h1>{{ tool.name }}</h1>
     <p>{{ tool.desc|linebreaks }}</p>
-    <p>Overall Score: {{ tool.overall_score|floatformat:"2" }} // Documentation Quality: {{ tool.qual_of_doc|floatformat:"2" }} // Efficacy: {{ tool.efficacy|floatformat:"2" }} // Usability: {{ tool.usability|floatformat:"2" }}<br>
+    <p>Overall Rating: {{ tool.overall_rating|floatformat:"2" }} // Documentation Quality: {{ tool.qual_of_doc|floatformat:"2" }} // Efficacy: {{ tool.efficacy|floatformat:"2" }} // Usability: {{ tool.usability|floatformat:"2" }}<br>
     <a href="{{ tool.link }}">{{ tool.name }} Home Page</a><br>
     {% if tool.free == True %}Free tool.<br>{% endif %}
     {% if tool.online == True %}Online tool.{% endif %}</p>
+
+    <form method="POST">{% csrf_token %}        
+        <table cellpadding = "50">
+            <tr><td>Overall Rating: </td><td>{{ form.overall_rating }}</td>
+            <tr><td>Quality of Documentation:&nbsp </td><td>{{ form.qual_of_doc }}</td>
+            <tr><td>Efficacy: </td><td>{{ form.efficacy }}</td>
+            <tr><td>Usability: </td><td>{{ form.usability }}</td></table>
+            <table><tr><td>Comment (Optional):</td></tr>
+            <tr><td>{{ form.comment }}</td></tr> 
+        </table>
+        <button type="submit">Save</button>
+    </form>
+
     {% for vote in votes %}
         <div class = "vote">
             <p>Review Date: {{ vote.review_date }} <br>
-            Overall Score: {{ vote.overall_rating|floatformat:"2" }} // Documentation Quality: {{ vote.qual_of_doc|floatformat:"2" }} // Efficacy: {{ vote.efficacy|floatformat:"2" }} // Usability: {{ vote.usability|floatformat:"2" }}
+            Overall Rating: {{ vote.overall_rating|floatformat:"2" }} // Documentation Quality: {{ vote.qual_of_doc|floatformat:"2" }} // Efficacy: {{ vote.efficacy|floatformat:"2" }} // Usability: {{ vote.usability|floatformat:"2" }}
             {% if vote.comment %}<br>{{ vote.comment }}{% endif %}</p>
             
         </div>
