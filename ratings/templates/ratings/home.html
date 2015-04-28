@@ -1,0 +1,18 @@
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+    <h1>Speak your mind with feHelix!</h1>
+    <p>feHelix is an interactive catalog of bioinformatics tools. Please browse the tool categories to explore the tools within the category or offer feedback about tools you have used in your own research. </p>
+    
+    <p><h1><a href="categories">Browse Tool Categories</h1></a></p>
+    
+    <p><h1>Latest Ratings</h1></p>
+    {% for newvote in newvotes %}
+        <div class = "vote">
+            <p>Tool Name: <a href = "/tool/{{ newvote.tool_id }}">{{ newvote.tool_id }}</a><br>
+            Review Date: {{ newvote.review_date }} <br>
+            Overall Rating: {{ newvote.overall_rating|floatformat:"2" }} // Documentation Quality: {{ newvote.qual_of_doc|floatformat:"2" }} // Efficacy: {{ newvote.efficacy|floatformat:"2" }} // Usability: {{ newvote.usability|floatformat:"2" }}
+            {% if newvote.comment %}<br>{{ newvote.comment }}{% endif %}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

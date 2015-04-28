@@ -13,6 +13,10 @@ from ratings.models import Vote
 from ratings.forms import VoteForm
 
 # Create your views here.
+def home(request):
+    newvotes = Vote.objects.all().order_by('-review_date')[:5]
+    return render(request, 'ratings/home.html', {'newvotes': newvotes})
+
 def categorys_list(request):
     categorys = Category.objects.all()
     return render(request, 'ratings/categorys_list.html', {'categorys': categorys})
