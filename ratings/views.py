@@ -2,6 +2,7 @@
 
 from django.shortcuts import get_object_or_404, redirect, render
 #from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
 import datetime
 
 from ratings.forms import VoteForm
@@ -11,11 +12,17 @@ from ratings.models import ToolCat
 from ratings.models import Vote
 
 from ratings.forms import VoteForm
+from ratings.forms import CategoryNominationForm
+from ratings.forms import ToolNominationForm
 
 # Create your views here.
 def home(request):
     newvotes = Vote.objects.all().order_by('-review_date')[:5]
-    return render(request, 'ratings/home.html', {'newvotes': newvotes})
+    hightools = Tool.objects.all().order_by('-overall_rating')[:5]
+    return render(request, 'ratings/home.html', {'hightools': hightools, 'newvotes': newvotes})
+        
+def nominate_tool(request):
+    return render(request, 'ratings/nominate_tool.html')
 
 def categorys_list(request):
     categorys = Category.objects.all()
@@ -62,3 +69,30 @@ def tool_detail(request, pk):
         form = VoteForm()
         return render(request, 'ratings/tool_detail.html', {'tool': tool, 'votes': votes, 'form': form})
 
+def nominate_category(request):
+    if request.method == "POST":
+        form = CategoryNominationForm(request.POST)
+        subject = "feHelix Nominate Category: " + request.POST.get('name', '')
+        message = "A user named " + request.POST.get('nominator_name', '') + " has nominated " + request.POST.get('name', '') + " as a new category."
+        from_email = request.POST.get('nominator_email', '')
+        if subject and message and from_email:
+            send_mail(subject, message, from_email, ['noreply@fehelix.herokuapp.com'])
+            return render(request, 'ratings/category_nomination.html', {'form': form})
+        return render(request, 'ratings/category_nomination.html', {'form': form})
+    else:
+        form = CategoryNominationForm()
+        return render(request, 'ratings/category_nomination.html', {'form': form})
+        
+def nominate_tool(request):
+    if request.method == "POST":
+        form = ToolNominationForm(request.POST)
+        subject = "feHelix Nominate Tool: " + request.POST.get('name', '')
+        message = "A user named " + request.POST.get('nominator_name', '') + " has nominated " + request.POST.get('name', '') + " as a new tool."
+        from_email = request.POST.get('nominator_email', '')
+        if subject and message and from_email:
+            send_mail(subject, message, from_email, ['noreply@fehelix.herokuapp.com'])
+            return render(request, 'ratings/tool_nomination.html', {'form': form})
+        return render(request, 'ratings/tool_nomination.html', {'form': form})
+    else:
+        form = ToolNominationForm()
+        return render(request, 'ratings/tool_nomination.html', {'form': form})

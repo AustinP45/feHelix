@@ -15,4 +15,5 @@
                 {% if tool.online == True %}Online tool.{% endif %}</p>
         </div>
     {% endfor %}
+    <a href = "{% url 'ratings.views.nominate_tool' %}"><h1>Nominate a new tool.</h1></a>
 {% endblock %}

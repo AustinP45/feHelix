@@ -7,4 +7,5 @@
             <p>{{ category.desc|linebreaks }}</p>
         </div>
     {% endfor %}
+    <a href = "{% url 'ratings.views.nominate_category' %}"><h1>Nominate a new category.</h1></a>
 {% endblock content %}
