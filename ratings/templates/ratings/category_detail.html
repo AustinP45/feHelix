@@ -9,10 +9,11 @@
         <div class = "tool">
             <h1><a href="{% url 'ratings.views.tool_detail_by_name' tool.name  %}">{{ tool.name }}</a></h1>
             <p>{{ tool.desc|linebreaks }}</p>
-            <p>Overall Score: {{ tool.overall_score|floatformat:"2" }} // Documentation Quality: {{ tool.qual_of_doc|floatformat:"2" }} // Efficacy: {{ tool.efficacy|floatformat:"2" }} // Usability: {{ tool.usability|floatformat:"2" }}<br>
+            <p>Overall Score: {{ tool.overall_rating|floatformat:"2" }} // Documentation Quality: {{ tool.qual_of_doc|floatformat:"2" }} // Efficacy: {{ tool.efficacy|floatformat:"2" }} // Usability: {{ tool.usability|floatformat:"2" }}<br>
                 <a href="{{ tool.link }}">{{ tool.name }} Home Page</a><br>
                 {% if tool.free == True %}Free tool.<br>{% endif %}
                 {% if tool.online == True %}Online tool.{% endif %}</p>
         </div>
     {% endfor %}
+    <a href = "{% url 'ratings.views.nominate_tool' %}"><h1>Nominate a new tool.</h1></a>
 {% endblock %}

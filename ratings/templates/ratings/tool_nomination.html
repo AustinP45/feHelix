@@ -1,0 +1,21 @@
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+    <h1>Nominate a new tool</h1>
+    <p>Please enter the information for the new tool.</p>
+    
+    <form method="POST">{% csrf_token %}        
+        <table cellpadding = "50">
+            <tr><td>Your Name:&nbsp</td><td>{{ form.nominator_name }}</td>
+            <tr><td>Your Email:&nbsp</td><td>{{ form.nominator_email }}</td>
+            <tr><td>Tool Name:&nbsp</td><td>{{ form.name }}</td>
+            <tr><td>Tool Home Page:&nbsp</td><td>{{ form.link }}</td>
+            <tr><td>The tool is free?:&nbsp</td><td>{{ form.free }}</td>
+            <tr><td>The tool is web-based?:&nbsp</td><td>{{ form.online }}</td>
+            <table><tr><td>Tool Description:</td></tr>
+            <tr><td>{{ form.desc }}</td></tr> 
+        </table>
+        <button type="submit">Submit Nomination</button>
+    </form>
+
+{% endblock %}

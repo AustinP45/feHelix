@@ -1,5 +1,7 @@
 from django import forms
 from .models import Vote
+from .models import Category
+from .models import Tool
 from django.utils.safestring import mark_safe
 
 class HorizRadioRenderer(forms.RadioSelect.renderer):
@@ -24,3 +26,24 @@ class VoteForm(forms.ModelForm):
         labels = {
             'overall_rating': "Overall Rating", 'qual_of_doc': "Quality of Documentation",
             'efficacy': "Efficacy", 'usability': "Usability", 'comment': "Optional Comments:"}
+            
+class CategoryNominationForm(forms.ModelForm):
+    nominator_name = forms.CharField(max_length=30)
+    nominator_email = forms.EmailField(max_length=30)
+    class Meta:
+        model = Category
+        fields = ('name', 'desc', 'nominator_name', 'nominator_email')
+        widgets = {'desc': forms.Textarea(attrs={'cols': 35, 'rows': 3})}
+        labels = {'name': "Category Name", 'desc': "Category Description", 'nominator_name': "Your Name", 'nominator_email': "Your email", 'free': "Is the tool free to use?&nbsp", 'online': "Is the tool web-based?&nbsp"}
+        
+        
+class ToolNominationForm(forms.ModelForm):
+    category = forms.CharField(max_length=100)
+    nominator_name = forms.CharField(max_length=30)
+    nominator_email = forms.EmailField(max_length=30)
+    class Meta:
+        model = Tool
+        link = forms.CharField(max_length=100)
+        fields = ('name', 'desc', 'link', 'free', 'online', 'category', 'nominator_name', 'nominator_email')
+        widgets = {'desc': forms.Textarea(attrs={'cols': 35, 'rows': 3})}
+        labels = {'name': "Tool Name", 'desc': "Tool Description", 'nominator_name': "Your Name", 'nominator_email': "Your email", 'link': "Link to tool home page:"}
