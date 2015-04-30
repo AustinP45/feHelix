@@ -76,7 +76,7 @@ def nominate_category(request):
         message = "A user named " + request.POST.get('nominator_name', '') + " has nominated " + request.POST.get('name', '') + " as a new category."
         from_email = request.POST.get('nominator_email', '')
         if subject and message and from_email:
-            send_mail(subject, message, from_email, ['noreply@fehelix.herokuapp.com'])
+            send_mail(subject, message, from_email, ['wmanion@unomaha.edu'])
             return render(request, 'ratings/category_nomination.html', {'form': form})
         return render(request, 'ratings/category_nomination.html', {'form': form})
     else:
@@ -87,10 +87,14 @@ def nominate_tool(request):
     if request.method == "POST":
         form = ToolNominationForm(request.POST)
         subject = "feHelix Nominate Tool: " + request.POST.get('name', '')
-        message = "A user named " + request.POST.get('nominator_name', '') + " has nominated " + request.POST.get('name', '') + " as a new tool."
+        message = "A user named " + request.POST.get('nominator_name', '') + " has nominated " + request.POST.get('name', '') + " as a new tool.\n\nDescription:\n" + request.POST.get('desc', '')
+        if request.POST.get('free', ''):
+            message += "\n\nThe tool is free."
+        if request.POST.get('online', ''):
+            message += "\n\nThe tool is web-based."
         from_email = request.POST.get('nominator_email', '')
         if subject and message and from_email:
-            send_mail(subject, message, from_email, ['noreply@fehelix.herokuapp.com'])
+            send_mail(subject, message, from_email, ['wmanion@unomaha.edu'])
             return render(request, 'ratings/tool_nomination.html', {'form': form})
         return render(request, 'ratings/tool_nomination.html', {'form': form})
     else:
