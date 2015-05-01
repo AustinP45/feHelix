@@ -1,5 +1,7 @@
+# Import django modules.
 from django.db import models
 
+# Tool class
 class Tool(models.Model):
     name = models.CharField(max_length=30, unique = True)
     desc =  models.TextField()
@@ -10,26 +12,30 @@ class Tool(models.Model):
     usability = models.DecimalField(max_digits=4, decimal_places=3)
     free = models.BooleanField(default=False)
     online = models.BooleanField(default=False)
-    #review_count = models.IntegerField() #Not needed.
 
+    # string method
     def __str__(self):
         return self.name
 
+# Category class
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True) # Must be unique
     desc = models.TextField()# No length limit
 
+    # string method
     def __str__(self):
         return self.name
 	
-# For many-to-many relationship	
+# Tool-Category class (many-to-many relationship)	
 class ToolCat(models.Model):
     tool_id = models.ForeignKey(Tool)
     cat_id = models.ForeignKey(Category)
 
+    # string method
     def __str__(self):
         return str(self.tool_id) + " in " + str(self.cat_id)
-	
+
+# Vote class
 class Vote(models.Model):
     tool_id = models.ForeignKey(Tool)
     comment = models.TextField(blank = True)
@@ -39,5 +45,7 @@ class Vote(models.Model):
     efficacy = models.PositiveSmallIntegerField()
     usability = models.PositiveSmallIntegerField()
 
+    # string method
     def __str__(self):
-        return str(self.tool_id) + ' ' + str(self.overall_rating) + ' ' + str(self.review_date)
+        return str(self.tool_id) + ' ' + str(self.overall_rating) + ' ' \
+            + str(self.review_date)

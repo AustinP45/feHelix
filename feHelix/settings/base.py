@@ -1,13 +1,3 @@
-"""
-Django settings for feHelix project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -25,6 +15,12 @@ SECRET_KEY = '&82q3nme(r^4xo7uwpm&li$+^esl&q8cb1*u4$$-2)5a%)t(bt'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'fehelix.bioinformatics@gmail.com'
+EMAIL_HOST_PASSWORD = 'nolimit6'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 ALLOWED_HOSTS = []
 
@@ -58,7 +54,6 @@ ROOT_URLCONF = 'feHelix.urls'
 
 WSGI_APPLICATION = 'feHelix.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -73,22 +68,9 @@ DATABASES = {
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Chicago'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
-
-
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'fehelix.bioinformatics@gmail.com'
-EMAIL_HOST_PASSWORD = 'nolimit6'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
 
 # FROM HEROKU #
 ###############
@@ -98,15 +80,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-# Static asset configuration
-#import os
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)

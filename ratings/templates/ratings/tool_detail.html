@@ -3,6 +3,11 @@
 {% block content %}
     {% if tool.name %}
     {% endif %}
+    
+<head>
+<title>feHelix: {{ tool.name }}</title>
+</head>
+
     <h1>{{ tool.name }}</h1>
     <p>{{ tool.desc|linebreaks }}</p>
     <p>Overall Rating: {{ tool.overall_rating|floatformat:"2" }} // Documentation Quality: {{ tool.qual_of_doc|floatformat:"2" }} // Efficacy: {{ tool.efficacy|floatformat:"2" }} // Usability: {{ tool.usability|floatformat:"2" }}<br>

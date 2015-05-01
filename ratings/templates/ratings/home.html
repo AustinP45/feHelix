@@ -1,14 +1,19 @@
 {% extends 'ratings/base.html' %}
 
+
 {% block content %}
+<head>
+<title>feHelix: Home Page</title>
+</head>
+
     <h1>Speak your mind with feHelix!</h1>
     <p>feHelix is an interactive catalog of bioinformatics tools. Please browse the tool categories to explore the tools within the category or offer feedback about tools you have used in your own research. </p>
     
     <p><h1><a href="categories">Browse tool categories</h1></a></p>
-    <p><h1><a href="nominate_category">Nominate a new category</h1></a></p>
-    <p><h1><a href="nominate_tool">Nominate a new tool</h1></a></p>
+    <p><h3><a href="nominate_category">Nominate a new category</h3></a></p>
+    <p><h3><a href="nominate_tool">Nominate a new tool</h3></a></p>
     
-    <p><h1>Top five highest rated tools</h1></p>
+    <p><h3>Top five highest rated tools</h3></p>
     {% for hightool in hightools %}
         <div class = "tool">
             <p>Tool Name: <a href = "/tool/{{ hightool.name }}">{{ hightool.name }}</a><br>
@@ -17,7 +22,7 @@
         </div>
     {% endfor %}
     
-    <p><h1>Latest five ratings</h1></p>
+    <p><h3>Latest five ratings</h3></p>
     {% for newvote in newvotes %}
         <div class = "vote">
             <p>Tool Name: <a href = "/tool/{{ newvote.tool_id }}">{{ newvote.tool_id }}</a><br>
