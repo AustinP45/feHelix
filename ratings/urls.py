@@ -1,6 +1,10 @@
+# import django modules
 from django.conf.urls import patterns, include, url
+
+# import Views
 from . import views
 
+# define regex matches for URLs
 urlpatterns = patterns('',
     url(r'^$', views.home),
     url(r'^categories$', views.categorys_list),

@@ -1,11 +1,17 @@
 {% extends 'ratings/base.html' %}
-
 {% block content %}
+<head>
+<title>feHelix: Bioinformatics Tool Categories List</title>
+</head>
     {% for category in categorys %}
         <div class="category">
-            <h1><a href="{% url 'ratings.views.category_detail_by_name' category.name  %}">{{ category.name }}</a></h1>
-            <p>{{ category.desc|linebreaks }}</p>
+        <h1>
+        <a href=
+        "{% url 'ratings.views.category_detail_by_name' category.name  %}">
+        {{ category.name }}</a></h1>
+        <p>{{ category.desc|linebreaks }}</p>
         </div>
     {% endfor %}
-    <a href = "{% url 'ratings.views.nominate_category' %}"><h1>Nominate a new category.</h1></a>
+    <a href = "{% url 'ratings.views.nominate_category' %}">
+    <h3>Nominate a new category.</h3></a>
 {% endblock content %}

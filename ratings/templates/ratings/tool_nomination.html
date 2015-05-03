@@ -1,6 +1,10 @@
 {% extends 'ratings/base.html' %}
 
 {% block content %}
+<head>
+<title>feHelix: Nominate a new tool</title>
+</head>
+
     <h1>Nominate a new tool</h1>
     <p>Please enter the information for the new tool.</p>
     
@@ -12,6 +16,7 @@
             <tr><td>Tool Home Page:&nbsp</td><td>{{ form.link }}</td>
             <tr><td>The tool is free?:&nbsp</td><td>{{ form.free }}</td>
             <tr><td>The tool is web-based?:&nbsp</td><td>{{ form.online }}</td>
+            <tr><td>&nbsp</td></tr></table>
             <table><tr><td>Tool Description:</td></tr>
             <tr><td>{{ form.desc }}</td></tr> 
         </table>
