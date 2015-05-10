@@ -98,7 +98,8 @@ def nominate_category(request):
             + request.POST.get('desc', '')
         from_email = request.POST.get('nominator_email', '')
         if subject and message and from_email:
-            send_mail(subject, message, from_email, ['wmanion@unomaha.edu'])
+            send_mail(subject, message, from_email, ['wmanion@unomaha.edu', \
+            'austinpeterson@unomaha.edu', 'mmooter@unomaha.edu'])
             return render(request, 'ratings/category_nomination.html', {'form': form})
         return render(request, 'ratings/category_nomination.html', {'form': form})
     else:
@@ -120,7 +121,8 @@ def nominate_tool(request):
             message += "\n\nThe tool is web-based."
         from_email = request.POST.get('nominator_email', '')
         if subject and message and from_email:
-            send_mail(subject, message, from_email, ['wmanion@unomaha.edu'])
+            send_mail(subject, message, from_email, ['wmanion@unomaha.edu', \
+            'austinpeterson@unomaha.edu', 'mmooter@unomaha.edu'])
             return render(request, 'ratings/tool_nomination.html', {'form': form})
         return render(request, 'ratings/tool_nomination.html', {'form': form})
     else:
