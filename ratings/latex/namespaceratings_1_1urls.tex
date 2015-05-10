@@ -1,0 +1,33 @@
+\hypertarget{namespaceratings_1_1urls}{\section{ratings.\-urls Namespace Reference}
+\label{namespaceratings_1_1urls}\index{ratings.\-urls@{ratings.\-urls}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple {\bfseries urlpatterns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}import django modules
+\end{DoxyVerb}
+ 
+
+\subsection{Variable Documentation}
+\hypertarget{namespaceratings_1_1urls_a2e8a8fea61824e88a8a18b13c0e3ce96}{\index{ratings\-::urls@{ratings\-::urls}!urlpatterns@{urlpatterns}}
+\index{urlpatterns@{urlpatterns}!ratings::urls@{ratings\-::urls}}
+\subsubsection[{urlpatterns}]{\setlength{\rightskip}{0pt plus 5cm}tuple ratings.\-urls.\-urlpatterns}}\label{namespaceratings_1_1urls_a2e8a8fea61824e88a8a18b13c0e3ce96}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = patterns(\textcolor{stringliteral}{''},
+2     \textcolor{stringliteral}{"""    define regex matches for URLs    """}
+3     url(\textcolor{stringliteral}{r'^$'}, views.home),
+4     url(\textcolor{stringliteral}{r'^categories$'}, views.categorys\_list),
+5     url(\textcolor{stringliteral}{r'^nominate\_category$'}, views.nominate\_category),
+6     url(\textcolor{stringliteral}{r'^nominate\_tool$'}, views.nominate\_tool),
+7     url(\textcolor{stringliteral}{r'^category/(?P<pk>[0-9]+)/$'}, views.category\_detail),
+8     url(\textcolor{stringliteral}{r'^category/(.+)/$'}, views.category\_detail\_by\_name),
+9     url(\textcolor{stringliteral}{r'^tool/(.+)/$'}, views.tool\_detail\_by\_name),
+10     url(\textcolor{stringliteral}{r'^tool/(?P<pk>[0-9]+)/$'}, views.tool\_detail),
+11 )
+\end{DoxyCode}

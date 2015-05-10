@@ -1,19 +1,27 @@
-#import django modules
+"""
+import django modules
+"""
 from django import forms
 from django.utils.safestring import mark_safe
 
-# import Models as bases for ModelForms
+"""
+import Models as bases for ModelForms
+"""
 from .models import Vote
 from .models import Category
 from .models import Tool
 
-# class to display radio buttons
 class HorizRadioRenderer(forms.RadioSelect.renderer):
+    """
+    class to display radio buttons
+    """
     def render(self):
         return mark_safe(u'\n'.join([u'%s\n' % w for w in self]))
 
-# VoteForm ModelForm (based on Vote Model)
 class VoteForm(forms.ModelForm):
+    """
+    # VoteForm ModelForm (based on Vote Model)
+    """
     class Meta:
         model = Vote
         CHOICES = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
@@ -34,8 +42,10 @@ class VoteForm(forms.ModelForm):
             'qual_of_doc': "Quality of Documentation", 'efficacy': "Efficacy", \
             'usability': "Usability", 'comment': "Optional Comments:&nbsp"}
 
-# CategoryNominationForm ModelForm (based on Category Model)
 class CategoryNominationForm(forms.ModelForm):
+    """
+    CategoryNominationForm ModelForm (based on Category Model)
+    """
     nominator_name = forms.CharField(max_length=30)
     nominator_email = forms.EmailField(max_length=30)
     class Meta:
@@ -47,8 +57,10 @@ class CategoryNominationForm(forms.ModelForm):
             'free': "Is the tool free to use?&nbsp", \
             'online': "Is the tool web-based?&nbsp"}
 
-# ToolNominationForm ModelForm (based on Tool Model)
 class ToolNominationForm(forms.ModelForm):
+    """
+    ToolNominationForm ModelForm (based on Tool Model)
+    """
     category = forms.CharField(max_length=100)
     nominator_name = forms.CharField(max_length=30)
     nominator_email = forms.EmailField(max_length=30)

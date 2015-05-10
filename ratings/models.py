@@ -1,8 +1,12 @@
-# Import django modules.
+"""
+Import django modules.
+"""
 from django.db import models
 
-# Tool class
 class Tool(models.Model):
+    """
+    Tool class
+    """
     name = models.CharField(max_length=30, unique = True)
     desc =  models.TextField()
     link =  models.URLField(max_length=100)
@@ -17,8 +21,10 @@ class Tool(models.Model):
     def __str__(self):
         return self.name
 
-# Category class
 class Category(models.Model):
+    """
+    Category class
+    """
     name = models.CharField(max_length=30, unique=True) # Must be unique
     desc = models.TextField()# No length limit
 
@@ -28,6 +34,9 @@ class Category(models.Model):
 	
 # Tool-Category class (many-to-many relationship)	
 class ToolCat(models.Model):
+    """
+    Tool class
+    """
     tool_id = models.ForeignKey(Tool)
     cat_id = models.ForeignKey(Category)
 
@@ -35,8 +44,10 @@ class ToolCat(models.Model):
     def __str__(self):
         return str(self.tool_id) + " in " + str(self.cat_id)
 
-# Vote class
 class Vote(models.Model):
+    """
+    Vote model
+    """
     tool_id = models.ForeignKey(Tool)
     comment = models.TextField(blank = True)
     review_date = models.DateTimeField()

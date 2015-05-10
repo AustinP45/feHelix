@@ -1,0 +1,60 @@
+\hypertarget{classratings_1_1forms_1_1VoteForm_1_1Meta}{\section{ratings.\-forms.\-Vote\-Form.\-Meta Class Reference}
+\label{classratings_1_1forms_1_1VoteForm_1_1Meta}\index{ratings.\-forms.\-Vote\-Form.\-Meta@{ratings.\-forms.\-Vote\-Form.\-Meta}}
+}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classratings_1_1forms_1_1VoteForm_1_1Meta_a35547c426ff6efd87351a80d1d6af337}{{\bfseries model} = Vote}\label{classratings_1_1forms_1_1VoteForm_1_1Meta_a35547c426ff6efd87351a80d1d6af337}
+
+\item 
+\hypertarget{classratings_1_1forms_1_1VoteForm_1_1Meta_a53c7794e98b0e8030e7533836796bffa}{list {\bfseries C\-H\-O\-I\-C\-E\-S} = \mbox{[}(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)\mbox{]}}\label{classratings_1_1forms_1_1VoteForm_1_1Meta_a53c7794e98b0e8030e7533836796bffa}
+
+\item 
+tuple {\bfseries fields}
+\item 
+dictionary {\bfseries widgets}
+\item 
+dictionary {\bfseries labels}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classratings_1_1forms_1_1VoteForm_1_1Meta_a181e07f4455cd11384602b077cd16070}{\index{ratings\-::forms\-::\-Vote\-Form\-::\-Meta@{ratings\-::forms\-::\-Vote\-Form\-::\-Meta}!fields@{fields}}
+\index{fields@{fields}!ratings::forms::VoteForm::Meta@{ratings\-::forms\-::\-Vote\-Form\-::\-Meta}}
+\subsubsection[{fields}]{\setlength{\rightskip}{0pt plus 5cm}tuple ratings.\-forms.\-Vote\-Form.\-Meta.\-fields\hspace{0.3cm}{\ttfamily [static]}}}\label{classratings_1_1forms_1_1VoteForm_1_1Meta_a181e07f4455cd11384602b077cd16070}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = (\textcolor{stringliteral}{'overall\_rating'}, \textcolor{stringliteral}{'qual\_of\_doc'}, \(\backslash\)
+2             \textcolor{stringliteral}{'efficacy'}, \textcolor{stringliteral}{'usability'}, \textcolor{stringliteral}{'comment'})
+\end{DoxyCode}
+\hypertarget{classratings_1_1forms_1_1VoteForm_1_1Meta_a80c82dfd8c58f8a74d813043b67b4030}{\index{ratings\-::forms\-::\-Vote\-Form\-::\-Meta@{ratings\-::forms\-::\-Vote\-Form\-::\-Meta}!labels@{labels}}
+\index{labels@{labels}!ratings::forms::VoteForm::Meta@{ratings\-::forms\-::\-Vote\-Form\-::\-Meta}}
+\subsubsection[{labels}]{\setlength{\rightskip}{0pt plus 5cm}dictionary ratings.\-forms.\-Vote\-Form.\-Meta.\-labels\hspace{0.3cm}{\ttfamily [static]}}}\label{classratings_1_1forms_1_1VoteForm_1_1Meta_a80c82dfd8c58f8a74d813043b67b4030}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = \{
+2             \textcolor{stringliteral}{'overall\_rating'}: \textcolor{stringliteral}{"Overall Rating"}, \(\backslash\)
+3             \textcolor{stringliteral}{'qual\_of\_doc'}: \textcolor{stringliteral}{"Quality of Documentation"}, \textcolor{stringliteral}{'efficacy'}: \textcolor{stringliteral}{"Efficacy"}, \(\backslash\)
+4             \textcolor{stringliteral}{'usability'}: \textcolor{stringliteral}{"Usability"}, \textcolor{stringliteral}{'comment'}: \textcolor{stringliteral}{"Optional Comments:&nbsp"}\}
+\end{DoxyCode}
+\hypertarget{classratings_1_1forms_1_1VoteForm_1_1Meta_a06f1bcb74e8d8c3661382ca14eddfcf1}{\index{ratings\-::forms\-::\-Vote\-Form\-::\-Meta@{ratings\-::forms\-::\-Vote\-Form\-::\-Meta}!widgets@{widgets}}
+\index{widgets@{widgets}!ratings::forms::VoteForm::Meta@{ratings\-::forms\-::\-Vote\-Form\-::\-Meta}}
+\subsubsection[{widgets}]{\setlength{\rightskip}{0pt plus 5cm}dictionary ratings.\-forms.\-Vote\-Form.\-Meta.\-widgets\hspace{0.3cm}{\ttfamily [static]}}}\label{classratings_1_1forms_1_1VoteForm_1_1Meta_a06f1bcb74e8d8c3661382ca14eddfcf1}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = \{
+2             \textcolor{stringliteral}{'overall\_rating'}: forms.RadioSelect(\(\backslash\)
+3                 renderer = HorizRadioRenderer, choices = CHOICES), 
+4             \textcolor{stringliteral}{'qual\_of\_doc'}: forms.RadioSelect(\(\backslash\)
+5                 renderer = HorizRadioRenderer, choices = CHOICES), 
+6             \textcolor{stringliteral}{'efficacy'}: forms.RadioSelect(\(\backslash\)
+7                 renderer = HorizRadioRenderer, choices = CHOICES), 
+8             \textcolor{stringliteral}{'usability'}: forms.RadioSelect(\(\backslash\)
+9                 renderer = HorizRadioRenderer, choices = CHOICES),
+10             \textcolor{stringliteral}{'comment'}: forms.Textarea(attrs=\{\textcolor{stringliteral}{'cols'}: 35, \textcolor{stringliteral}{'rows'}: 3\})\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+forms.\-py\end{DoxyCompactItemize}

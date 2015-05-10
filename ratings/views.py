@@ -1,59 +1,75 @@
-# Pretty good chance having two categories or tools with same names or spaces 
-# in place of underscores will cause problems.
-
-# Import django modules
+"""
+Import django modules
+"""
 from django.shortcuts import get_object_or_404, redirect, render
 from django.core.mail import send_mail
 import datetime
-#from django.http import HttpResponseRedirect
 
-# Import models
+"""
+Import models
+"""
 from ratings.models import Category
 from ratings.models import Tool
 from ratings.models import ToolCat
 from ratings.models import Vote
 
-# Import forms
+"""
+Import forms
+"""
 from ratings.forms import VoteForm
 from ratings.forms import CategoryNominationForm
 from ratings.forms import ToolNominationForm
 
-# Home page view
 def home(request):
+    """
+    Home page view
+    """
     newvotes = Vote.objects.all().order_by('-review_date')[:5]
     hightools = Tool.objects.all().order_by('-overall_rating')[:5]
     return render(request, 'ratings/home.html', {'hightools': hightools, \
         'newvotes': newvotes})
 
-# Tool nomination view
 def nominate_tool(request):
+    """
+    Tool nomination view
+    """
     return render(request, 'ratings/nominate_tool.html')
 
-# Category list view
 def categorys_list(request):
+    """
+    Category list view
+    """
     categorys = Category.objects.all()
     return render(request, 'ratings/categorys_list.html', \
         {'categorys': categorys})
 
-# Single category detail view (by pk)
 def category_detail(request, pk):
+    """
+    Single category detail view (by pk)
+    """
     category = get_object_or_404(Category, pk=pk)
     tools = Tool.objects.filter(toolcat__cat_id = category)
     return render(request, 'ratings/category_detail.html', \
         {'category': category, 'tools': tools})
 
-# Single category detail view (by name) (wrapper)
 def category_detail_by_name(request, cat_name):
+    """
+    Single category detail view (by name) (wrapper)
+    """
     category = get_object_or_404(Category, name = cat_name.replace('_', ' '))
     return category_detail(request, category.id)
 
-# Single tool detail view (by name) (wrapper)
 def tool_detail_by_name(request, tool_name):
+    """
+    Single tool detail view (by name) (wrapper)
+    """
     tool = get_object_or_404(Tool, name = tool_name.replace('_', ' '))
     return tool_detail(request, tool.id)
 
-# Single tool detail view (by pk)
 def tool_detail(request, pk):
+    """
+    Single tool detail view (by pk)
+    """
     tool = get_object_or_404(Tool, pk=pk)
     votes = Vote.objects.filter(tool_id = tool)
     
@@ -88,6 +104,9 @@ def tool_detail(request, pk):
             {'tool': tool, 'votes': votes, 'form': form})
 
 def nominate_category(request):
+    """
+    Category nomination form
+    """
     if request.method == "POST":
         form = CategoryNominationForm(request.POST)
         subject = "feHelix Category Nomination: " + request.POST.get('name', '')
@@ -107,6 +126,9 @@ def nominate_category(request):
         return render(request, 'ratings/category_nomination.html', {'form': form})
         
 def nominate_tool(request):
+    """
+    Tool nomination form
+    """
     if request.method == "POST":
         form = ToolNominationForm(request.POST)
         subject = "feHelix Tool Nomination: " + request.POST.get('name', '')
